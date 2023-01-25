@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+						http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+						http://www.liquibase.org/xml/ns/pro 
+						http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+						
+						
+	<changeSet author="Gopal" id="01-25-2023::10:25">
+        
+        
+    </changeSet>	
+    
+    <changeSet author="Gopal" id="01-25-2023::10:30">
+    <createTable tableName = "user">
+    <column autoIncrement="true" name="user_id" type="int">
+    <constraints primaryKey ="true"/>
+    </column>
+    <column name="user_name" type="VARCHAR(50)">
+    <constraints notNullConstraintName ="true"/>
+    </column>
+    <column name="address" type="VARCHAR(50)">
+    </column>
+    <column name="contact_number" type="int">
+    </column>
+    
+    
+    </createTable>
+        
+        
+    </changeSet>			
+    
+     <changeSet author="Gopal" id="01-25-2023::10:32">
+    <createTable tableName = "movie">
+    <column autoIncrement="true" name="movie_id" type="int">
+    <constraints primaryKey ="true"/>
+    </column>
+    <column name="movie_name" type="VARCHAR(100)">
+    <constraints notNullConstraintName ="true"/>
+    </column>
+    <column name="release_date" type="DATE">
+    </column>
+ 
+    
+    
+    </createTable>
+        
+        
+    </changeSet>	
+   			
+    
+   	
+     <changeSet author="Gopal" id="01-25-2023::10:45">
+    <sql>
+    CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT,
+    user_id INT,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES movie(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id));
+
+    
+    </sql>
+        
+        
+    </changeSet>
+    <changeSet author="Gopal" id="01-25-2023::10:50">
+    <sql>
+    CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT,
+    user_id INT,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES movie(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id));
+
+    
+    </sql>
+        
+        
+    </changeSet>
+				
+						
+						
+						
+    
+   
+</databaseChangeLog>

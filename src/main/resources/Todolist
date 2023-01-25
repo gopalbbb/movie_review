@@ -1,0 +1,6 @@
+created spring starter project name with movie_review .
+add dependency (spring web, dev tools, jpa,liquibase.xml, thiemleaf,mysql).
+add root path in application. properties. 
+created logs file for logger 
+created liquibase xml file for create table in database
+created schema in mysql workbench 

@@ -1,0 +1,897 @@
+2023-01-25T10:37:57.454-05:00 ERROR 15616 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2023-01-25T11:15:47.076-05:00 ERROR 15436 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO increment,
+    movie_id INTEGER NOT NULL,
+    user_id INTEGER not null,
+   ' at line 2 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INTEGER NOT NULL AUTO increment,
+    movie_id INTEGER NOT NULL,
+    user_id INTEGER not null,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291) ~[spring-boot-3.0.2.jar:3.0.2]
+	at com.movie_review.MovieReviewApplication.main(MovieReviewApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-3.0.2.jar:3.0.2]
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO increment,
+    movie_id INTEGER NOT NULL,
+    user_id INTEGER not null,
+   ' at line 2 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INTEGER NOT NULL AUTO increment,
+    movie_id INTEGER NOT NULL,
+    user_id INTEGER not null,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:126) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:291) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:290) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:2447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:236) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:221) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:328) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:283) ~[liquibase-core-4.17.2.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747) ~[spring-beans-6.0.4.jar:6.0.4]
+	... 23 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO increment,
+    movie_id INTEGER NOT NULL,
+    user_id INTEGER not null,
+   ' at line 2 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INTEGER NOT NULL AUTO increment,
+    movie_id INTEGER NOT NULL,
+    user_id INTEGER not null,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:714) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:56) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:113) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:112) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:93) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:247) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:65) ~[liquibase-core-4.17.2.jar:na]
+	... 41 common frames omitted
+Caused by: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO increment,
+    movie_id INTEGER NOT NULL,
+    user_id INTEGER not null,
+   ' at line 2 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INTEGER NOT NULL AUTO increment,
+    movie_id INTEGER NOT NULL,
+    user_id INTEGER not null,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:78) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:161) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1270) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1252) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:679) ~[liquibase-core-4.17.2.jar:na]
+	... 61 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO increment,
+    movie_id INTEGER NOT NULL,
+    user_id INTEGER not null,
+   ' at line 2
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:443) ~[liquibase-core-4.17.2.jar:na]
+	... 66 common frames omitted
+
+2023-01-25T11:24:58.357-05:00 ERROR 15436 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291) ~[spring-boot-3.0.2.jar:3.0.2]
+	at com.movie_review.MovieReviewApplication.main(MovieReviewApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-3.0.2.jar:3.0.2]
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:126) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:291) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:290) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:2447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:236) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:221) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:328) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:283) ~[liquibase-core-4.17.2.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747) ~[spring-beans-6.0.4.jar:6.0.4]
+	... 23 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:714) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:56) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:113) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:112) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:93) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:247) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:65) ~[liquibase-core-4.17.2.jar:na]
+	... 41 common frames omitted
+Caused by: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:78) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:161) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1270) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1252) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:679) ~[liquibase-core-4.17.2.jar:na]
+	... 61 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:443) ~[liquibase-core-4.17.2.jar:na]
+	... 66 common frames omitted
+
+2023-01-25T11:29:37.236-05:00 ERROR 15436 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291) ~[spring-boot-3.0.2.jar:3.0.2]
+	at com.movie_review.MovieReviewApplication.main(MovieReviewApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-3.0.2.jar:3.0.2]
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:126) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:291) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:290) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:2447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:236) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:221) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:328) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:283) ~[liquibase-core-4.17.2.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747) ~[spring-beans-6.0.4.jar:6.0.4]
+	... 23 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:714) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:56) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:113) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:112) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:93) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:247) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:65) ~[liquibase-core-4.17.2.jar:na]
+	... 41 common frames omitted
+Caused by: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:78) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:161) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1270) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1252) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:679) ~[liquibase-core-4.17.2.jar:na]
+	... 61 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:443) ~[liquibase-core-4.17.2.jar:na]
+	... 66 common frames omitted
+
+2023-01-25T11:32:59.135-05:00 ERROR 15436 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291) ~[spring-boot-3.0.2.jar:3.0.2]
+	at com.movie_review.MovieReviewApplication.main(MovieReviewApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-3.0.2.jar:3.0.2]
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:126) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:291) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:290) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:2447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:236) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:221) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:328) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:283) ~[liquibase-core-4.17.2.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747) ~[spring-beans-6.0.4.jar:6.0.4]
+	... 23 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:714) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:56) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:113) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:112) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:93) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:247) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:65) ~[liquibase-core-4.17.2.jar:na]
+	... 41 common frames omitted
+Caused by: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:78) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:161) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1270) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1252) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:679) ~[liquibase-core-4.17.2.jar:na]
+	... 61 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:443) ~[liquibase-core-4.17.2.jar:na]
+	... 66 common frames omitted
+
+2023-01-25T11:34:49.691-05:00 ERROR 15436 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291) ~[spring-boot-3.0.2.jar:3.0.2]
+	at com.movie_review.MovieReviewApplication.main(MovieReviewApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-3.0.2.jar:3.0.2]
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:126) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:291) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:290) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:2447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:236) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:221) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:328) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:283) ~[liquibase-core-4.17.2.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747) ~[spring-beans-6.0.4.jar:6.0.4]
+	... 23 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:35::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:714) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:56) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:113) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:112) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:93) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:247) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:65) ~[liquibase-core-4.17.2.jar:na]
+	... 41 common frames omitted
+Caused by: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES move(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:78) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:161) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1270) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1252) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:679) ~[liquibase-core-4.17.2.jar:na]
+	... 61 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:443) ~[liquibase-core-4.17.2.jar:na]
+	... 66 common frames omitted
+
+2023-01-25T11:36:17.862-05:00 ERROR 15436 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:45::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT,
+    user_id INT,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES movie(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291) ~[spring-boot-3.0.2.jar:3.0.2]
+	at com.movie_review.MovieReviewApplication.main(MovieReviewApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-3.0.2.jar:3.0.2]
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:45::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT,
+    user_id INT,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES movie(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:126) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:291) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:290) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:2447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:236) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:221) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:328) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:283) ~[liquibase-core-4.17.2.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747) ~[spring-beans-6.0.4.jar:6.0.4]
+	... 23 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:45::Gopal:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT,
+    user_id INT,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES movie(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:714) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:56) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:113) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:112) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:93) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:247) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:65) ~[liquibase-core-4.17.2.jar:na]
+	... 41 common frames omitted
+Caused by: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9 [Failed SQL: (1064) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT,
+    user_id INT,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES movie(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:78) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:161) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1270) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1252) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:679) ~[liquibase-core-4.17.2.jar:na]
+	... 61 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 9
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:443) ~[liquibase-core-4.17.2.jar:na]
+	... 66 common frames omitted
+
+2023-01-25T12:21:11.381-05:00 ERROR 15436 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:50::Gopal:
+     Reason: liquibase.exception.DatabaseException: Table 'movie_review' already exists [Failed SQL: (1050) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT,
+    user_id INT,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES movie(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id))]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1130) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:905) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302) ~[spring-boot-3.0.2.jar:3.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291) ~[spring-boot-3.0.2.jar:3.0.2]
+	at com.movie_review.MovieReviewApplication.main(MovieReviewApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-3.0.2.jar:3.0.2]
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:50::Gopal:
+     Reason: liquibase.exception.DatabaseException: Table 'movie_review' already exists [Failed SQL: (1050) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT,
+    user_id INT,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES movie(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id))]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:126) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:291) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:290) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:2447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:236) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:221) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:328) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:283) ~[liquibase-core-4.17.2.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797) ~[spring-beans-6.0.4.jar:6.0.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747) ~[spring-beans-6.0.4.jar:6.0.4]
+	... 23 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog.xml::01-25-2023::10:50::Gopal:
+     Reason: liquibase.exception.DatabaseException: Table 'movie_review' already exists [Failed SQL: (1050) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT,
+    user_id INT,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES movie(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id))]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:714) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:56) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:113) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:112) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:93) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.Scope.child(Scope.java:247) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:65) ~[liquibase-core-4.17.2.jar:na]
+	... 41 common frames omitted
+Caused by: liquibase.exception.DatabaseException: Table 'movie_review' already exists [Failed SQL: (1050) CREATE TABLE movie_review (
+    review_id INT NOT NULL AUTO_INCREMENT,
+    movie_id INT,
+    user_id INT,
+    PRIMARY KEY (review_id),
+    CONSTRAINT FOREIGN KEY (movie_id)
+    REFERENCES movie(movie_id),
+     CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES user(user_id))]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:447) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:78) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:161) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1270) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1252) ~[liquibase-core-4.17.2.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:679) ~[liquibase-core-4.17.2.jar:na]
+	... 61 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: Table 'movie_review' already exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:443) ~[liquibase-core-4.17.2.jar:na]
+	... 66 common frames omitted
+
